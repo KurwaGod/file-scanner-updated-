@@ -150,14 +150,14 @@ namespace TextFormatAnalyzer
         {
             try
             {
-                // First, try to identify by binary signature
+                // First, try to identify by binary signature for file type 
                 string binaryType = DetectBinarySignature(filePath);
                 if (!string.IsNullOrEmpty(binaryType))
                 {
                     return binaryType;
                 }
 
-                // Then try to detect based on text signatures
+                // Then try to detect based on text signatures in indivudal file types 
                 string textType = DetectTextSignature(filePath);
                 if (!string.IsNullOrEmpty(textType))
                 {
@@ -249,7 +249,7 @@ namespace TextFormatAnalyzer
         {
             try
             {
-                // Read first few lines to detect text-based signatures
+                // read first few lines to detect text-based signatures (redundant?)
                 using (StreamReader reader = new StreamReader(filePath))
                 {
                     string firstLines = string.Empty;
@@ -387,7 +387,7 @@ namespace TextFormatAnalyzer
             {
                 string normalizedWord = word.ToLowerInvariant();
                 
-                // Use word boundary regex
+                // Use word boundary regex function 
                 string pattern = $@"\b{Regex.Escape(normalizedWord)}\b";
                 int count = Regex.Matches(normalizedContent, pattern).Count;
                 
